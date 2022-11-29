@@ -87,7 +87,7 @@ class ClosestObjectClass():
                 #Linear velocity = 0, just turn towards the closest object
                 self.movement.linear.x  = 0.0
                 #closest angle determines the direction of the turn (+:CW, -:CCW)
-                self.movement.angular.z = 0.5*self.angle_closest
+                self.movement.angular.z = 0.7*self.angle_closest
         else:
             print("stop")
             self.movement.linear.x  = 0.0

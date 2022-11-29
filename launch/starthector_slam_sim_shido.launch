@@ -1,0 +1,29 @@
+<!--This launch file will be used to start hector slam with a gazebo simulation 
+You should first start a gazebo simulation of a robot with some lidar 
+for example the two_wheels_description simulation -->
+
+
+<launch>
+   <param name="/use_sim_time" value="false"/>
+
+  <!--<include file="$(find shido_robot)/launch/rplidar_shido.launch" />-->
+
+  <arg name="geotiff_map_file_path" default="$(find hector_geotiff)/maps"/>
+
+
+  <!--<node pkg="rviz" type="rviz" name="rviz_1"
+    args="-d $(find shido_robot)/rviz_cfg/mapping_demo.rviz"/> -->
+
+  <include file="$(find shido_robot)/launch/mapping_default_shido.launch"/>
+
+  <node pkg="tf2_ros" type="static_transform_publisher" name="base2laser_tf" args="0 0 0 0 0 0 base_link laser"/> 
+
+  <!--include file="$(find hector_geotiff)/launch/geotiff_mapper.launch">
+    <arg name="trajectory_source_frame_name" value="scanmatcher_frame"/>
+    <arg name="map_file_path" value="$(arg geotiff_map_file_path)"/>
+  </include-->
+
+  <!-- launches the keyboard teleoperation node to drive the two_wheels_descritption robot around -->
+  <!--<node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop_twist_keyboard" output="screen"/>-->
+
+</launch>
