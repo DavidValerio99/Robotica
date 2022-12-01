@@ -1,15 +1,12 @@
 <!--
-  Used for visualising rplidar in action.  
-  
-  It requires rplidar.launch.
+  This launch file implements the nav2d functionallity for
+  Obstacle avoidance.
  -->
 
 <launch>
   <param name="use_sim_time" value="false" />
   <node pkg="rosserial_python" type="serial_node.py" args="/dev/ttyACM0" name="Arduino_serial" />
-  <!--<include file="$(find rplidar_ros)/launch/view_rplidar.launch" />-->
   <include file="$(find rplidar_ros)/launch/rplidar.launch" />
   <include file="$(find shido_robot)/launch/tutorial1.launch" />
-  <!--<node pkg="beginner_tutorials" type="closest_follower.py" name="Follower"/>-->
 
 </launch>
